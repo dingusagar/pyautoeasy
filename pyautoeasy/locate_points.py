@@ -23,6 +23,10 @@ message_queue = Queue()
 QUEUE_POLLING_INTERVAL = 0.5
 
 class InteractivePositionLocator:
+    """
+    Interactive tool to grab the x,y positions of desired locations in the screen.
+    Assign variable names to these positions and generate a sample.py program.
+    """
     KEY_COMBINATION_SAVE = {'Key.alt', 's'}
     KEY_COMBINATION_RECORD_CURSOR = {'Key.alt', 'r'}
 
@@ -75,6 +79,10 @@ class InteractivePositionLocator:
             file.write(program)
 
     def grab_cursor_positions(self):
+        """
+        Start interactive program to grab the cursor positions.
+        :return:
+        """
         keyboard_listeners = keyboard.Listener(on_press=self.on_press, on_release=self.on_release)
         keyboard_listeners.start()
 
