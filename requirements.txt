@@ -1,3 +1,4 @@
 PyAutoGUI==0.9.53
 pynput==1.7.3
 tabulate==0.8.9
+Sphinx==4.2.0
