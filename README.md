@@ -74,6 +74,8 @@ point1.click_here() # click on this point
 point1.right_click_here() # right click on this point
 point1.cursor_here() # move the cursor to this point
 point1.type_here("text to type") # type something after selecting this point.
+point1.double_click_here() # double click on this point
+point1.triple_click_here() # triple click on this point
 ```
 
 * By default all the operations in ScreenPoint class is done after a delay of `ScreenPoint.Config.delay' (defaults to 1 second).
