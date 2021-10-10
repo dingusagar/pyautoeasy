@@ -39,7 +39,7 @@ password_field.click_here()
 submit_button = ScreenPoint(pos=(1127, 597))
 submit_button.click_here()
 ```
-You could take above file and easily modify it to something like this. Super easy and intuitive!
+You could take above generated file and easily modify it to something like this. Super easy and intuitive!
 
 ```
 from pyautoeasy import ScreenPoint
