@@ -8,7 +8,7 @@ When PyAutoGUI offers powerful ways to control keyboard and mouse movements, PyA
 
 How to install
 ============
-
+Thanks to pip! its as simple as :
 `pip install pyautoeasy`
 
 
