@@ -59,12 +59,12 @@ submit_button.click_here()
 
 More about ScreenPoint
 =============
-A ScreenPoint object represents a point in your screen with (x,y) cordinates specified in the `pos` argument in the constructor. 
+* A ScreenPoint object represents a point in your screen with (x,y) cordinates specified in the `pos` argument in the constructor. 
 
 `point1 = ScreenPoint(pos=(34, 78))`
 
-We can use the ScreenPoint object to move the curser there, click on that point, type something there, right click on that point etc. 
-These are achived by using the following methods :
+* We can use the ScreenPoint object to move the curser there, click on that point, type something there, right click on that point etc. 
+These operations can be done easily by using the following methods :
 ```
 point1 = ScreenPoint(pos=(34, 78))
 point1.click_here() # click on this point
@@ -72,5 +72,19 @@ point1.right_click_here() # right click on this point
 point1.cursor_here() # move the cursor to this point
 point1.type_here("text to type") # type something after selecting this point.
 ```
+
+* By default all the operations in ScreenPoint class is done after a delay of `ScreenPoint.Config.delay' (defaults to 1 second).
+We can change this property gloabally as follows 
+
+`ScreenPoint.Config.delay = 0.5`
+
+* Alternatively we can even have a delay specified at each operation by passing the argument `after_sleeping_for`.
+```
+point1 = ScreenPoint(pos=(34, 78))
+point1.click_here(after_sleeping_for=0.5) # click on this point after a delay of 0.5 seconds
+point1.right_click_here(after_sleeping_for=0) # right click on this point after a delay of 0 seconds.
+```
+
+* type_here() method can take an optional argument `enter=True` which would press an enter key after typing the text. By default `enter=True`
 
 
