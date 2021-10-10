@@ -21,7 +21,10 @@ Example Usage
 
 Step 1 : Generate initial code after grabbing the required locations in the screen
 --------------------------
-1. Open a terminal / command prompt and run `pyautoeasy`
+1. Open a terminal / command prompt and run 
+  ```
+  pyautoeasy
+  ```
 2. Move your cursor to the desired location and press `alt+r` in the keyboard to record the coordinates of a point in the screen.
 3. This opens up a dialog box, Now give a name to this point and click OK.
 4. Repeat the above 2 steps for all the cursor locations that you want to grab.
