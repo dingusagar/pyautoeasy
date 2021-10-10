@@ -29,5 +29,8 @@ setup(
         "Operating System :: Unix",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows",
-    ]
+    ],
+    entry_points={
+        'console_scripts': ['pyautoeasy=pyautoeasy.cli:main'],
+    }
 )
