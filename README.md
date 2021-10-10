@@ -57,3 +57,20 @@ submit_button = ScreenPoint(pos=(1127, 597))
 submit_button.click_here()
 ```
 
+More about ScreenPoint
+=============
+A ScreenPoint object represents a point in your screen with (x,y) cordinates specified in the `pos` argument in the constructor. 
+
+`point1 = ScreenPoint(pos=(34, 78))`
+
+We can use the ScreenPoint object to move the curser there, click on that point, type something there, right click on that point etc. 
+These are achived by using the following methods :
+```
+point1 = ScreenPoint(pos=(34, 78))
+point1.click_here() # click on this point
+point1.right_click_here() # right click on this point
+point1.cursor_here() # move the cursor to this point
+point1.type_here("text to type") # type something after selecting this point.
+```
+
+
