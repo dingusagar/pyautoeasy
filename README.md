@@ -15,7 +15,7 @@ How to install
 Example Usage
 =============
 
-Step 1 :Generate initial code after grabbing the required locations in the screen
+Step 1 : Generate initial code after grabbing the required locations in the screen
 --------------------------
 1. Open a terminal / command prompt and run `pyautoeasy`
 2. Move your cursor to the desired location and press `alt+r` in the keyboard to record a location point.
