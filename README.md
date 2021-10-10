@@ -51,7 +51,7 @@ email_field.type_here("mytestemail@gmail.com")
 
 password_field = ScreenPoint(pos=(934, 438))
 password_field.click_here()
-email_field.type_here("password@123")
+password_field.type_here("password@123")
 
 submit_button = ScreenPoint(pos=(1127, 597))
 submit_button.click_here()
