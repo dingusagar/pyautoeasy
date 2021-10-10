@@ -27,7 +27,7 @@ setup(
     ],
     keywords=['python', 'pyautoeasy', 'pyautogui', 'automate gui', 'automate ui', 'ui automation'],
     classifiers=[
-        "Development Status :: 1 - Initial Release",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Operating System :: Unix",
