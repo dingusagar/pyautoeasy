@@ -4,6 +4,15 @@ from queue import Queue
 import pyautogui
 from pynput import keyboard
 
+DOC_STRING_FOR_GENERATED_PROGRAM = '''
+\"\"\"
+_________________________________________________________________________________________
+ScreenPoint refers to a point in the screen. All the recorded points are generated here.
+You may use these objects and its methods to quickly create an automation script.
+_________________________________________________________________________________________
+\"\"\"
+'''
+
 MODIFIER_KEYS = {
     'ctrl': 'Key.ctrl',
     'alt': 'Key.alt',
@@ -30,61 +39,55 @@ class InteractivePositionLocator:
 
     def record_cursor_pos(self):
         x, y = pyautogui.position()
-        position_variable_name = pyautogui.prompt(f'Recording position ({x},{y}). Variable name :')
+        position_variable_name = pyautogui.prompt(
+            f'Recording cursor position ({x},{y}).\n Give a name to refer to this position:')
         if position_variable_name:
             self.saved_cursor_positions[position_variable_name] = (x, y)
-        print(f'Recording Cursor Position at ({x},{y}) as variable {position_variable_name}')
+            print(f'\nRecording Cursor Position at ({x},{y}) as variable {position_variable_name}')
 
     def on_press(self, key):
         key = str(key).strip("'")
         self.pressed_keys.add(key)
-        print("Key pressed: {0}".format(key))
-
         if self.KEY_COMBINATION_SAVE.issubset(self.pressed_keys):
             message_queue.put(None)
         elif self.KEY_COMBINATION_RECORD_CURSOR.issubset(self.pressed_keys):
             message_queue.put(key)
-        print(self.pressed_keys)
 
     def on_release(self, key):
         key = str(key).strip("'")
-        print("Key released: {0}".format(key))
         if key in self.pressed_keys:
             self.pressed_keys.remove(key)
-        print(self.pressed_keys)
 
     def generate_program(self):
         sample_program_file_name = self.output_file
-        print(f'Generating sample program : {sample_program_file_name}')
+        print(f'\nGenerating sample automation program : {sample_program_file_name}')
 
-        program_lines = ['from pyautoeasy import ScreenPoint', '\n']
-
+        program_lines = []
+        program_lines.append(DOC_STRING_FOR_GENERATED_PROGRAM)
+        program_lines.append('from pyautoeasy import ScreenPoint\n')
         for variable_name, pos in self.saved_cursor_positions.items():
             program_lines.append(f'{variable_name} = ScreenPoint(pos={pos})')
             program_lines.append(f'{variable_name}.click_here()')
             program_lines.append('\n')
 
         program = '\n'.join(program_lines)
-        print(program)
         with open(sample_program_file_name, 'w') as file:
             file.write(program)
 
     def grab_cursor_positions(self):
-        listener = keyboard.Listener(on_press=self.on_press, on_release=self.on_release)
-        listener.start()
+        keyboard_listeners = keyboard.Listener(on_press=self.on_press, on_release=self.on_release)
+        keyboard_listeners.start()
 
         while True:
-            print('polling queue..')
             data = message_queue.get()
-            print(f'Data : {data}')
             if not data:
-                print('Stopping Keyboard listeners..')
-                listener.stop()
+                print('Stopping Keyboard and mouse listeners..')
+                keyboard_listeners.stop()
                 break
             self.record_cursor_pos()
 
-        print(f'Saving cursor positions : {self.saved_cursor_positions}...')
-        with open('saved_cursor_positions.json', 'w') as convert_file:
+        print(f'Saving the following cursor positions : {self.saved_cursor_positions} to cursor_positions.json')
+        with open('cursor_positions.json', 'w') as convert_file:
             convert_file.write(json.dumps(self.saved_cursor_positions))
 
         self.generate_program()

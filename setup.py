@@ -20,7 +20,11 @@ setup(
     long_description_content_type="text/markdown",
     long_description=long_description,
     packages=find_packages(),
-    install_requires=['PyAutoGUI==0.9.53', 'pynput==1.7.3'],
+    install_requires=[
+        'PyAutoGUI==0.9.53',
+        'pynput==1.7.3',
+        'tabulate==0.8.9'
+    ],
     keywords=['python', 'pyautoeasy', 'pyautogui', 'automate gui', 'automate ui', 'ui automation'],
     classifiers=[
         "Development Status :: 1 - Initial Release",
