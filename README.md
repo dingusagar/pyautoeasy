@@ -26,7 +26,7 @@ Step 1 : Generate initial code after grabbing the required locations in the scre
 
 Step 2 : Modify the sample script to suit your needs.
 --------------------------
-Lets say you wanna create a login automation. Follow step 1 to record all desired locations in the screen like email, password fields, submit button etc.
+Lets say you wanna create a login automation. Follow step 1 to record all desired locations in the screen like email field, password field, submit button etc.
 The generated sample program would look something like this. 
 ```
 from pyautoeasy import ScreenPoint
