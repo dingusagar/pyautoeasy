@@ -10,7 +10,10 @@ How to install
 ============
 Thanks to pip! its as simple as :
 
-`pip install pyautoeasy`
+```
+pip install --upgrade pip
+pip install pyautoeasy
+```
 
 
 Example Usage
