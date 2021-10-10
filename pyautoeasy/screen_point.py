@@ -15,6 +15,10 @@ class ScreenPoint:
         time.sleep(after_sleeping_for)
         pyautogui.click(x=self.pos[0], y=self.pos[1])
 
+    def double_click_here(self, after_sleeping_for=Config.delay):
+        time.sleep(after_sleeping_for)
+        pyautogui.click(x=self.pos[0], y=self.pos[1], clicks=2)
+
     def right_click_here(self, after_sleeping_for=Config.delay):
         time.sleep(after_sleeping_for)
         pyautogui.click(x=self.pos[0], y=self.pos[1], button='RIGHT')
