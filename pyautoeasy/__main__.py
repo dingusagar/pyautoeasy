@@ -6,9 +6,9 @@ from pyautoeasy import InteractivePositionLocator
 def get_args():
     main_parser = argparse.ArgumentParser(prog='pyautoeasy', usage='%(prog)s --locate --output sample')
     main_parser.add_argument('-o', '--output', default='sample', help='File name of the generated sample program')
-    main_parser.add_argument('--cursor-record-key', default='ctrl+alt+r',
+    main_parser.add_argument('--cursor-record-key', default='alt+r',
                              help='Records the current position of cursor and prompts for a meaningful name for this location.')
-    main_parser.add_argument('--save-key', default='ctrl+alt+s',
+    main_parser.add_argument('--save-key', default='alt+s',
                              help='saves the recorded cursor positions and generates a sample program')
     args = main_parser.parse_args()
     return args

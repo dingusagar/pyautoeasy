@@ -1,8 +1,8 @@
 import json
+from queue import Queue
 
 import pyautogui
-import pymsgbox
-from pynput.keyboard import Listener as KeyboardListener
+from pynput import keyboard
 
 MODIFIER_KEYS = {
     'ctrl': 'Key.ctrl',
@@ -10,13 +10,14 @@ MODIFIER_KEYS = {
     'cmd': 'Key.cmd',
 }
 
+message_queue = Queue()
+QUEUE_POLLING_INTERVAL = 0.5
 
 class InteractivePositionLocator:
     KEY_COMBINATION_SAVE = {'Key.alt', 's'}
     KEY_COMBINATION_RECORD_CURSOR = {'Key.alt', 'r'}
 
     def __init__(self, output_file, save_key='alt+s', cursor_record_key='alt+r'):
-        self.keyboard_listener = KeyboardListener(on_press=self.on_press, on_release=self.on_release)
         self.saved_cursor_positions = {}
 
         # The currently active modifiers
@@ -25,14 +26,11 @@ class InteractivePositionLocator:
 
         self.KEY_COMBINATION_SAVE = self.get_keys(save_key)
         self.KEY_COMBINATION_RECORD_CURSOR = self.get_keys(cursor_record_key)
-
-    def stop_listeners(self):
-        print('stopping all listeners..')
-        self.keyboard_listener.stop()
+        self.stop_listener = False
 
     def record_cursor_pos(self):
         x, y = pyautogui.position()
-        position_variable_name = pymsgbox.prompt(f'Recording position ({x},{y}). Variable name :')
+        position_variable_name = pyautogui.prompt(f'Recording position ({x},{y}). Variable name :')
         if position_variable_name:
             self.saved_cursor_positions[position_variable_name] = (x, y)
         print(f'Recording Cursor Position at ({x},{y}) as variable {position_variable_name}')
@@ -43,9 +41,9 @@ class InteractivePositionLocator:
         print("Key pressed: {0}".format(key))
 
         if self.KEY_COMBINATION_SAVE.issubset(self.pressed_keys):
-            self.stop_listeners()
+            message_queue.put(None)
         elif self.KEY_COMBINATION_RECORD_CURSOR.issubset(self.pressed_keys):
-            self.record_cursor_pos()
+            message_queue.put(key)
         print(self.pressed_keys)
 
     def on_release(self, key):
@@ -72,8 +70,18 @@ class InteractivePositionLocator:
             file.write(program)
 
     def grab_cursor_positions(self):
-        self.keyboard_listener.start()
-        self.keyboard_listener.join()
+        listener = keyboard.Listener(on_press=self.on_press, on_release=self.on_release)
+        listener.start()
+
+        while True:
+            print('polling queue..')
+            data = message_queue.get()
+            print(f'Data : {data}')
+            if not data:
+                print('Stopping Keyboard listeners..')
+                listener.stop()
+                break
+            self.record_cursor_pos()
 
         print(f'Saving cursor positions : {self.saved_cursor_positions}...')
         with open('saved_cursor_positions.json', 'w') as convert_file:
@@ -93,5 +101,5 @@ class InteractivePositionLocator:
 
 
 if __name__ == '__main__':
-    locator = InteractivePositionLocator(output_file='sample', save_key='alt+ctrl+s', cursor_record_key='alt+ctrl+r')
+    locator = InteractivePositionLocator(output_file='sample', save_key='alt+s', cursor_record_key='alt+r')
     locator.grab_cursor_positions()
