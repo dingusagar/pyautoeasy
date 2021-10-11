@@ -1,7 +1,7 @@
 PyAutoEasy
 =========
 
-[PyAutoEasy](https://pypi.org/project/pyautoeasy/) is a utility wrapper around the famous [PyAutoGUI](https://pypi.org/project/PyAutoGUI/), a cross-platform GUI automation tool to replace your boooring repetitive tasks. 
+[PyAutoEasy](https://pypi.org/project/pyautoeasy/) is a extension / wrapper around the famous [PyAutoGUI](https://pypi.org/project/PyAutoGUI/), a cross-platform GUI automation tool to replace your boooring repetitive tasks. 
 
 When PyAutoGUI offers powerful ways to control keyboard and mouse movements, PyAutoEasy makes it super easy to grab the cursor positions on the screen and give meaningful names to them and generate the boilerplate program which we can easily modify to suit our needs. 
 
