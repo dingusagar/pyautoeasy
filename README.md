@@ -30,7 +30,7 @@ Step 1 : Generate initial code after grabbing the required locations in the scre
 4. Repeat the above 2 steps for all the cursor locations that you want to grab.
 5. Press `alt+s` to generate your initial automation script. (`sample.py`)
 
-Step 2 : Modify the sample script to suit your needs.
+Step 2 : Modify the generated sample script to suit your needs.
 --------------------------
 Lets say you wanna create a login automation. Follow step 1 to record all desired locations in the screen like email field, password field, submit button etc.
 The generated sample program would look something like this. 
