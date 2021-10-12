@@ -3,6 +3,7 @@ from queue import Queue
 
 import pyautogui
 from pynput import keyboard
+import os
 
 DOC_STRING_FOR_GENERATED_PROGRAM = '''
 \"\"\"
@@ -13,11 +14,21 @@ ________________________________________________________________________________
 \"\"\"
 '''
 
-MODIFIER_KEYS = {
+MODIFIER_KEYS_LINUX = {
     'ctrl': 'Key.ctrl',
     'alt': 'Key.alt',
     'cmd': 'Key.cmd',
 }
+
+
+MODIFIER_KEYS_WINDOWS = {
+    'ctrl': 'Key.ctrl_l',
+    'alt': 'Key.alt_l',
+}
+if os.name == 'nt': #windows machine
+    MODIFIER_KEYS = MODIFIER_KEYS_WINDOWS
+else:
+    MODIFIER_KEYS = MODIFIER_KEYS_LINUX
 
 message_queue = Queue()
 QUEUE_POLLING_INTERVAL = 0.5
