@@ -100,4 +100,7 @@ point1.right_click_here(after_sleeping_for=0) # right click on this point after 
 
 * type_here() method can take an optional argument `enter=True` which would press an enter key after typing the text. By default `enter=True`
 
+Contribute and Make it better
+=============
 
+Any form of contribution is welcome. From finding and reporting bugs to giving feedback to suggesting cool features to building out cool features. Check out [CONTRIBUTING.md](https://github.com/dingusagar/pyautoeasy/blob/main/CONTRIBUTING.md) for more details. 
