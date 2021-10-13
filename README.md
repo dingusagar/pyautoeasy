@@ -34,7 +34,7 @@ Step 2 : Modify the generated sample script to suit your needs.
 --------------------------
 Lets say you wanna create a login automation. Follow step 1 to record all desired locations in the screen like email field, password field, submit button etc.
 The generated sample program would look something like this. 
-```
+```py
 from pyautoeasy import ScreenPoint
 
 email_field = ScreenPoint(pos=(952, 309))
@@ -48,7 +48,7 @@ submit_button.click_here()
 ```
 Now you can take above generated file and easily modify it to something like this. Super easy and intuitive!
 
-```
+```py
 from pyautoeasy import ScreenPoint
 
 email_field = ScreenPoint(pos=(952, 309))
@@ -67,11 +67,14 @@ More about ScreenPoint
 =============
 * A ScreenPoint object represents a point in your screen with (x,y) cordinates specified in the `pos` argument in the constructor. 
 
-`point1 = ScreenPoint(pos=(34, 78))`
+```py
+point1 = ScreenPoint(pos=(34, 78))
+
+```
 
 * We can use the ScreenPoint object to move the curser there, click on that point, type something there, right click on that point etc. 
 These operations can be done easily by using the following methods :
-```
+```py
 point1 = ScreenPoint(pos=(34, 78))
 point1.click_here() # click on this point
 point1.right_click_here() # right click on this point
@@ -84,10 +87,12 @@ point1.triple_click_here() # triple click on this point
 * By default all the operations in ScreenPoint class is done after a delay of `ScreenPoint.Config.delay' (defaults to 1 second).
 We can change this property gloabally as follows 
 
-`ScreenPoint.Config.delay = 0.5`
+```py
+ScreenPoint.Config.delay = 0.5
+```
 
 * Alternatively we can even have a delay specified at each operation by passing the argument `after_sleeping_for`.
-```
+```py
 point1 = ScreenPoint(pos=(34, 78))
 point1.click_here(after_sleeping_for=0.5) # click on this point after a delay of 0.5 seconds
 point1.right_click_here(after_sleeping_for=0) # right click on this point after a delay of 0 seconds.
