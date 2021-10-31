@@ -14,6 +14,12 @@ class ScreenPoint:
     def __init__(self, pos):
         self.pos = pos
 
+    @classmethod
+    def from_image(cls, image_path):
+        image_location = pyautogui.locateOnScreen(image_path)
+        image_center = pyautogui.center(image_location)
+        return cls(pos=(image_center.x, image_center.y))
+
     def cursor_here(self, after_sleeping_for=Config.delay):
         """
         move the cursor to this point.
