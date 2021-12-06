@@ -71,3 +71,17 @@ class ScreenPoint:
         pyautogui.write(text)
         if enter:
             pyautogui.press('enter')
+            
+    def drag_to(self, ending_point, button="left", duration=1, after_sleeping_for=Config.delay):
+        """
+        drag the mouse point from one point to another
+        :param ending_point: position where you want to drag the mouse pointer to
+        :param button: mouse button which needs to be pressed while dragging mouse pointer
+        :param duration: time it should take the mouse pointer to reach end point
+        :param after_sleeping_for: sleep for these many seconds before doing the operation.
+        """
+        pyautogui.moveTo(self.pos[0], self.pos[1])
+        time.sleep(after_sleeping_for)
+        pyautogui.dragTo(ending_point.pos[0], ending_point.pos[1], duration, button=button)
+        
+        
