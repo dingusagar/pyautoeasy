@@ -13,7 +13,7 @@ https://user-images.githubusercontent.com/12700858/149637563-53c90e80-4106-43dc-
 
 
 
-How to install
+How to install it
 ============
 Thanks to pip! its as simple as :
 
@@ -21,9 +21,9 @@ Thanks to pip! its as simple as :
 pip install --upgrade pip
 pip install pyautoeasy
 ```
+https://pypi.org/project/pyautoeasy/
 
-
-Example Usage
+How to use it
 =============
 
 Step 1 : Generate initial code after grabbing the required locations in the screen
