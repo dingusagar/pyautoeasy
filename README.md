@@ -6,6 +6,13 @@ PyAutoEasy
 When PyAutoGUI offers powerful ways to control keyboard and mouse movements, PyAutoEasy makes it super easy to grab the cursor positions on the screen and give meaningful names to them and generate the boilerplate program which we can easily modify to suit our needs. 
 
 
+A quick demo
+============
+
+https://user-images.githubusercontent.com/12700858/149637563-53c90e80-4106-43dc-b866-9523985a46a4.mp4
+
+
+
 How to install
 ============
 Thanks to pip! its as simple as :
